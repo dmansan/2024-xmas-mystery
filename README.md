@@ -29,7 +29,7 @@ Ensure you have the following:
 
 2. S3 Setup
 
-**a. Create an S3 Bucket  **
+**a. Create an S3 Bucket**  
   1.	Log in to the AWS Management Console.
   2.	Navigate to S3 and create a new bucket:
     	- Name: `2024-xmas-mystery` (or your preferred name) | You will need this bucket name to match in the lambdas code  
@@ -38,7 +38,7 @@ Ensure you have the following:
       		- Set the index document to index.html.
        	- Ensure public access is enabled for this bucket so it can accessed on public internet  
 
-**b. Upload Frontend Files  **
+**b. Upload Frontend Files**  
   1.	Upload the following files:  
     	- congratulations.html
     	- index.html
@@ -46,14 +46,14 @@ Ensure you have the following:
     	
   2.	Set the uploaded files to be publicly accessible.
      
-**c. Test Static Website  **
+**c. Test Static Website**  
   1.	Note the bucket object endpoint for the index.html (e.g., `https://2024-xmas-mystery.s3.us-east-1.amazonaws.com/index.html`). | the first portion will be based on your bucket name you set
   2.	Open the endpoint in a browser to ensure the site loads. 
 
 ---
 3. Lambda Functions
 
-**a. GetLeaderboard Function   **
+**a. GetLeaderboard Function**  
   1.	Navigate to AWS Lambda and create a new function:  
     	- 	Name: `GetLeaderboard`
      	- 	Runtime: `Node.js 18.x`
@@ -61,7 +61,7 @@ Ensure you have the following:
   3.	Add an environment variable:  
      	- 	BUCKET_NAME: `your-bucket-name`  
 
-**b. UpdateLeaderboard Function  ** 
+**b. UpdateLeaderboard Function**   
   1.	Create another Lambda function:
     	- 	Name: `UpdateLeaderboard`
      	- 	Runtime: `Node.js 18.x`
