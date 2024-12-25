@@ -43,8 +43,8 @@ Ensure you have the following:
     	- congratulations.html
     	- index.html
     	- All associated images (clue1.png, clue2.png, etc.).
-    	
-  2.	Set the uploaded files to be publicly accessible.
+     	- leaderboard.json (starter json file for the leaderboard being blank) 
+
      
 **c. Test Static Website**  
   1.	Note the bucket object endpoint for the index.html (e.g., `https://2024-xmas-mystery.s3.us-east-1.amazonaws.com/index.html`). | the first portion will be based on your bucket name you set
@@ -58,8 +58,8 @@ Ensure you have the following:
     	- 	Name: `GetLeaderboard`
      	- 	Runtime: `Node.js 18.x`
   2.	Paste the code from the GetLeaderboard.js file | don't forget to change the bucket  name in the code  
-  3.	Add an environment variable:  
-     	- 	BUCKET_NAME: `your-bucket-name`  
+  3.	Update code environment variable:  
+     	- 	const BUCKET_NAME: `your-bucket-name`  
 
 **b. UpdateLeaderboard Function**   
   1.	Create another Lambda function:
@@ -67,8 +67,8 @@ Ensure you have the following:
      	- 	Runtime: `Node.js 18.x`
   2.	Paste the code from UpdateLeaderboard.js file | don't forget to change the bucket  name in the code
     	- 	This is where the passcode is set, in line 24. 
-  4.	Add an environment variable:  
-     	- 	BUCKET_NAME: `your-bucket-name`| (dont forget to use your bucket name and replace in the arn for the bucket in json below  
+  4.	Update code environment variable:   
+     	- 	const BUCKET_NAME: `your-bucket-name`| (dont forget to use your bucket name and replace in the arn for the bucket in json below  
   5.	Attach the following IAM policy (json) to allow read & write access to the S3 bucket:  
 ```javascript
 	{
