@@ -74,9 +74,16 @@ Ensure you have the following:
   5.	Go to s3 bucket and Attach the following IAM policy (json) to allow read & write access to the S3 bucket:  
 ```javascript
 	{
-	    "Effect": "Allow",
-	    "Action": ["s3:GetObject", "s3:PutObject"],
-	    "Resource": "arn:aws:s3:::your-bucket-name/leaderboard.json"
+	    "Version": "2012-10-17",
+	    "Statement": [
+	        {
+	            "Sid": "PublicReadGetObject",
+	            "Effect": "Allow",
+	            "Principal": "*",
+	            "Action": "s3:GetObject",
+	            "Resource": "arn:aws:s3:::your-bucket-name/*"
+	        }
+	    ]
 	}
 ```
 
