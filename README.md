@@ -39,11 +39,11 @@ Ensure you have the following:
        	- Ensure public access is enabled for this bucket so it can accessed on public internet  
 
 **b. Upload Frontend Files**  
-  1.	Upload the following files:  
-    	- congratulations.html
-    	- index.html
-    	- All associated images (clue1.png, clue2.png, etc.).
-     	- leaderboard.json (starter json file for the leaderboard being blank) 
+  1.	Upload all the repo files, some are explained below:  
+    	- congratulations.html = page that loads upon successful code entry
+    	- index.html = landing page
+    	- All associated images = clues & favicons
+     	- leaderboard.json = starter json file for the leaderboard being blank
 
      
 **c. Test Static Website**  
