@@ -26,36 +26,36 @@ Ensure you have the following:
 2. S3 Setup
 
 a. Create an S3 Bucket  
-  1.	Log in to the AWS Management Console.  
-	2.	Navigate to S3 and create a new bucket:
+  1.	Log in to the AWS Management Console.
+  2.	Navigate to S3 and create a new bucket:
     	- Name: `2024-xmas-mystery` (or your preferred name) | You will need this bucket name to match in the lambdas code  
     	- Region: Pick a preferred AWS region.  
     	- Enable Static Website Hosting:
-      - Set the index document to index.html.  
-    	-	Ensure public access is enabled for this bucket so it can accessed on public internet  
+      		- Set the index document to index.html.
+       	- Ensure public access is enabled for this bucket so it can accessed on public internet  
 
 b. Upload Frontend Files  
   1.	Upload the following files:  
-    - index.html  
-    - congratulations.html  
-    - All associated images (clue1.png, clue2.png, etc.).
+    	- congratulations.html
+    	- index.html
+    	- All associated images (clue1.png, clue2.png, etc.).
     	
-  2.	Set the uploaded files to be publicly accessible.
+  3.	Set the uploaded files to be publicly accessible.
 
-c. Test Static Website
-	1.	Note the bucket endpoint (e.g., http://<bucket-name>.s3-website-<region>.amazonaws.com).
-	2.	Open the endpoint in a browser to ensure the site loads.
+c. Test Static Website  
+	1. Note the bucket endpoint (e.g., http://<bucket-name>.s3-website-<region>.amazonaws.com).  
+	2. Open the endpoint in a browser to ensure the site loads.  
 
-3. Lambda Functions
+3. Lambda Functions  
 
-a. GetLeaderboard Function
-	1.	Navigate to AWS Lambda and create a new function:
-	•	Name: GetLeaderboard
-	•	Runtime: Node.js 18.x
-	2.	Upload the GetLeaderboard.js file.
-	3.	Add an environment variable:
-	•	BUCKET_NAME: 2024-xmas-mystery (or your bucket name).
-	4.	Attach the following IAM policy to allow read access to the S3 bucket:
+a. GetLeaderboard Function  
+	1.	Navigate to AWS Lambda and create a new function:  
+		- Name: GetLeaderboard  
+		- Runtime: Node.js 18.x  
+	2.	Upload the GetLeaderboard.js file.  
+	3.	Add an environment variable:  
+		- BUCKET_NAME: 2024-xmas-mystery (or your bucket name).  
+	4.	Attach the following IAM policy to allow read access to the S3 bucket:  
 
 ```json
 {
