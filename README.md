@@ -94,6 +94,9 @@ Ensure you have the following:
 
 **b. Enable CORS**
   1.	Enable CORS for both endpoints to allow requests from the S3 frontend.
+![Screenshot 2024-12-25 at 5 05 43 PM](https://github.com/user-attachments/assets/6abbfce8-2f50-425a-9a50-11dcf336cdbf)
+
+
 
 **c. Deploy the API**
   1.	Deploy the API to a new stage (e.g., prod).
