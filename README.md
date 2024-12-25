@@ -94,7 +94,8 @@ Ensure you have the following:
 
 **b. Enable CORS**
   1.	Enable CORS for both endpoints to allow requests from the S3 frontend.
-![Screenshot 2024-12-25 at 5 05 43 PM](https://github.com/user-attachments/assets/6abbfce8-2f50-425a-9a50-11dcf336cdbf)
+![Screenshot 2024-12-25 at 5 06 44 PM](https://github.com/user-attachments/assets/9e2fc81a-d6e0-42af-9026-7fdcbf76296e)
+
 
 
 
