@@ -59,7 +59,8 @@ Ensure you have the following:
      	- 	Runtime: `Node.js 18.x`
   2.	Paste the code from the GetLeaderboard.js file | don't forget to change the bucket  name in the code  
   3.	Update code environment variable:  
-     	- 	const BUCKET_NAME: `your-bucket-name`  
+     	- 	const BUCKET_NAME: `your-bucket-name`
+  4.	Deploy lambda function 
 
 **b. UpdateLeaderboard Function**   
   1.	Create another Lambda function:
@@ -67,9 +68,10 @@ Ensure you have the following:
      	- 	Runtime: `Node.js 18.x`
   2.	Paste the code from UpdateLeaderboard.js file | don't forget to change the bucket  name in the code
     	- 	This is where the passcode is set, in line 24. 
-  4.	Update code environment variable:   
+  3.	Update code environment variable:   
      	- 	const BUCKET_NAME: `your-bucket-name`| (dont forget to use your bucket name and replace in the arn for the bucket in json below  
-  5.	Attach the following IAM policy (json) to allow read & write access to the S3 bucket:  
+  4.	Deploy lambda function  
+  5.	Go to s3 bucket and Attach the following IAM policy (json) to allow read & write access to the S3 bucket:  
 ```javascript
 	{
 	    "Effect": "Allow",
