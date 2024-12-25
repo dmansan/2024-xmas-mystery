@@ -11,6 +11,8 @@ The architecture includes:
 -	API Gateway: Provides REST endpoints for communication between the frontend and backend.  
 -	S3 Bucket: Stores the leaderboard data in a JSON file.  
 
+---
+
 **Deployment Steps**
 
 1. Prerequisites
@@ -22,6 +24,8 @@ Ensure you have the following:
   - S3 Buckets
   - Lambda Functions
   - API Gateway
+
+---
 
 2. S3 Setup
 
@@ -40,57 +44,52 @@ b. Upload Frontend Files
     	- index.html
     	- All associated images (clue1.png, clue2.png, etc.).
     	
-  3.	Set the uploaded files to be publicly accessible.
-
+  2.	Set the uploaded files to be publicly accessible.
+     
 c. Test Static Website  
-	1. Note the bucket endpoint (e.g., http://<bucket-name>.s3-website-<region>.amazonaws.com).  
-	2. Open the endpoint in a browser to ensure the site loads.  
+  1.	Note the bucket object endpoint for the index.html (e.g., `https://2024-xmas-mystery.s3.us-east-1.amazonaws.com/index.html`). | the first portion will be based on your bucket name you set
+  2.	Open the endpoint in a browser to ensure the site loads. 
 
-3. Lambda Functions  
+---
+3. Lambda Functions
 
-a. GetLeaderboard Function  
-	1.	Navigate to AWS Lambda and create a new function:  
-		- Name: GetLeaderboard  
-		- Runtime: Node.js 18.x  
-	2.	Upload the GetLeaderboard.js file.  
-	3.	Add an environment variable:  
-		- BUCKET_NAME: 2024-xmas-mystery (or your bucket name).  
-	4.	Attach the following IAM policy to allow read access to the S3 bucket:  
+a. GetLeaderboard Function   
+  1.	Navigate to AWS Lambda and create a new function:  
+    	- 	Name: `GetLeaderboard`
+     	- 	Runtime: `Node.js 18.x`
+  2.	Paste the code from the GetLeaderboard.js file | don't forget to change the bucket  name in the code  
+  3.	Add an environment variable:  
+     	- 	BUCKET_NAME: `your-bucket-name`  
 
-```json
-{
-    "Effect": "Allow",
-    "Action": ["s3:GetObject"],
-    "Resource": "arn:aws:s3:::2024-xmas-mystery/leaderboard.json"
-}
+b. UpdateLeaderboard Function   
+  1.	Create another Lambda function:
+    	- 	Name: `UpdateLeaderboard`
+     	- 	Runtime: `Node.js 18.x`
+  2.	Paste the code from UpdateLeaderboard.js file | don't forget to change the bucket  name in the code  
+  3.	Add an environment variable:  
+     	- 	BUCKET_NAME: `your-bucket-name`| (dont forget to use your bucket name and replace in the arn for the bucket in json below  
+  4.	Attach the following IAM policy (json) to allow read & write access to the S3 bucket:  
+```javascript
+	{
+	    "Effect": "Allow",
+	    "Action": ["s3:GetObject", "s3:PutObject"],
+	    "Resource": "arn:aws:s3:::your-bucket-name/leaderboard.json"
+	}
 ```
 
-
-
-b. UpdateLeaderboard Function
-	1.	Create another Lambda function:
-	•	Name: UpdateLeaderboard
-	•	Runtime: Node.js 18.x
-	2.	Upload the UpdateLeaderboard.js file.
-	3.	Add an environment variable:
-	•	BUCKET_NAME: 2024-xmas-mystery (or your bucket name).
-	4.	Attach the following IAM policy to allow read and write access to the S3 bucket:
-
-{
-    "Effect": "Allow",
-    "Action": ["s3:GetObject", "s3:PutObject"],
-    "Resource": "arn:aws:s3:::2024-xmas-mystery/leaderboard.json"
-}
-
+---
 4. API Gateway
 
-a. Create API
-	1.	Navigate to API Gateway and create a REST API.
-	2.	Add two endpoints:
-	•	GET /get-leaderboard
-	•	Integrate this endpoint with the GetLeaderboard Lambda function.
-	•	POST /update-leaderboard
-	•	Integrate this endpoint with the UpdateLeaderboard Lambda function.
+a. GetLeaderboard Function   
+  1.	Navigate to API Gateway and create a REST API. 
+
+  2.	Add two endpoints:  
+     -	GET /get-leaderboard
+    	- Integrate this endpoint with the GetLeaderboard Lambda function.  
+     - POST /update-leaderboard  
+     	- Integrate this endpoint with the UpdateLeaderboard Lambda function.  
+
+
 
 b. Enable CORS
 	1.	Enable CORS for both endpoints to allow requests from the S3 frontend.
@@ -106,15 +105,19 @@ In index.html, update the API endpoints:
 const GET_API_ENDPOINT = '<API_BASE_URL>/get-leaderboard';
 const POST_API_ENDPOINT = '<API_BASE_URL>/update-leaderboard';
 
+---
 5. Testing
 	1.	Open the website using the S3 static hosting endpoint.
 	2.	Verify the following functionalities:
-	•	Clue toggling works as expected.
-	•	Inputting the correct passcode displays the congratulatory message.
-	•	The leaderboard updates correctly.
-	3.	Check both Lambda functions for successful execution.
+    	- 	Clue toggling works as expected.
+     	- 	Inputting the correct passcode displays the congratulatory message.
+     	- 	The leaderboard updates correctly.
+ 	3.	Submit a correct and incorrect password to check both Lambda functions for successful execution.  
+
 
 **Credits**
-
-danmansan
 This project was designed and implemented by danmansan.
+
+
+> WHEN IN DOUBT ASK CHATGPT OR YOUR FAVORITE GEN AI TO HELP GIVE YOU MORE INSTRUCTIONS ON TO FIX ERRORS.  
+ MOST OF THIS PROJECT WAS CREATED & DEBUGGED WITH CHATGPT
